@@ -4,8 +4,10 @@ const csv = require('csv-parser');
 const fs = require('fs');
 const rgv =require('yargs').argv;
 
-const filepath = "pro.csv"
+const filepath = "datos.csv"
 const results = [];
+
+
 
 fs.createReadStream(filepath)
 
@@ -16,8 +18,8 @@ fs.createReadStream(filepath)
     .pipe(csv())
     //.pipe(fs.createWriteStream('./jola.json'))
     .on('data', (row) => {
-        //console.log(row);
         results.push(row)
+        //console.log(row)
         //fs.createWriteStream(row)
     })
 
@@ -25,21 +27,18 @@ fs.createReadStream(filepath)
         // handle end of CSV
         //console.log(results)
 
-        if (rgv.usuario ==='publicar'){
-            let cout='Country Name';
-            //console.log(results[0]);
-            let res=results[0];
-            console.log(res==cout);
-            
+        if (rgv.usuario ==='mostrar'){
+            //console.log(results);
+            let res=results[4];
+            console.log(res);
+         
             let resul= results.find(Country_Name => Country_Name=='Aruba');
-            console.log(resul);
-
+            //console.log(resul)
+            console.log(results);
         }else{
-            console.log("usuario no valido");
+            console.log("codigo no valido");
             
         
 
         }
     });
-
-   
